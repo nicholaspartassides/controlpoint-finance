@@ -164,6 +164,27 @@ a { color: inherit; text-decoration: none; }
 .card h3 { color: var(--navy); font-size: 1.1rem; margin-bottom: 0.5rem; }
 .card p { color: var(--muted); font-size: 0.95rem; }
 .problem { border-left: 4px solid var(--accent); }
+.card-photo {
+  display: block; width: calc(100% + 3.5rem); max-width: none; height: 190px; object-fit: cover;
+  margin: -1.75rem -1.75rem 1.25rem; border-radius: var(--radius) var(--radius) 0 0;
+}
+.problem .card-photo { border-top-left-radius: 0; }
+
+.side-photo {
+  display: block; width: 100%; height: 100%; min-height: 280px; object-fit: cover;
+  border-radius: var(--radius); box-shadow: var(--shadow);
+}
+.split { display: grid; grid-template-columns: 1.7fr 1fr; gap: 2rem; align-items: stretch; }
+.how-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 2.5rem; align-items: center; }
+.how-grid .side-photo { height: auto; aspect-ratio: 3 / 2; }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.contact-photo { height: 220px; min-height: 0; margin-top: 2rem; object-position: center 75%; }
+
+.photo-band {
+  padding: 4.5rem 0; text-align: center; color: #fff;
+  background: linear-gradient(rgba(11, 42, 91, 0.86), rgba(11, 42, 91, 0.86)), url(img/growth-band.jpg) center / cover;
+}
+.photo-band h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; line-height: 1.25; margin-bottom: 1.5rem; }
 .icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
 
 /* Not doing */
@@ -276,7 +297,8 @@ details p { margin-top: 0.75rem; color: var(--muted); }
 
 /* Responsive */
 @media (max-width: 960px) {
-  .hero-grid, .contact-grid, .not-doing { grid-template-columns: 1fr; }
+  .hero-grid, .contact-grid, .not-doing, .split, .how-grid { grid-template-columns: 1fr; }
+  .split .side-photo { height: 240px; min-height: 0; }
   .grid-3 { grid-template-columns: repeat(2, 1fr); }
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .featured { order: -1; }
@@ -298,7 +320,7 @@ details p { margin-top: 0.75rem; color: var(--muted); }
   .nav.nav-static a { width: auto; padding: 0; }
   .nav a { padding: 1rem; width: 100%; text-align: center; }
   .nav .btn { width: auto; margin: 0.5rem 0 1rem; }
-  .grid-3, .grid-4, .field-row { grid-template-columns: 1fr; }
+  .grid-2, .grid-3, .grid-4, .field-row { grid-template-columns: 1fr; }
   .hero { padding: 3.5rem 0; }
   .section { padding: 3.5rem 0; }
 }
