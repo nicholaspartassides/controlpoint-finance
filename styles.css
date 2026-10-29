@@ -1,3 +1,28 @@
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url(fonts/manrope-greek.woff2) format("woff2");
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url(fonts/manrope-latin-ext.woff2) format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url(fonts/manrope-latin.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 :root {
   --navy: #0f1f3d;
   --navy-2: #1a2f57;
@@ -224,6 +249,17 @@ details p { margin-top: 0.75rem; color: var(--muted); }
 .form-status.error { color: #dc2626; }
 .form-status.success { color: var(--accent-dark); }
 
+/* Legal pages */
+.legal h1 { font-size: 2rem; color: var(--navy); margin-bottom: 0.25rem; }
+.legal h2 { font-size: 1.25rem; color: var(--navy); margin: 2rem 0 0.6rem; }
+.legal h3 { font-size: 1rem; color: var(--navy); margin: 1.1rem 0 0.35rem; }
+.legal p, .legal li { color: var(--text); margin-bottom: 0.75rem; }
+.legal ul { padding-left: 1.25rem; }
+.legal a { color: var(--accent-dark); text-decoration: underline; }
+.form-privacy { font-size: 0.8rem; color: var(--muted); text-align: center; }
+.form-privacy a { text-decoration: underline; }
+.site-footer a { text-decoration: underline; }
+
 /* Footer */
 .site-footer { background: #0a1630; color: #94a3b8; padding: 1.75rem 0; font-size: 0.85rem; }
 .footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
@@ -245,6 +281,11 @@ details p { margin-top: 0.75rem; color: var(--muted); }
     max-height: 0; overflow: hidden; transition: max-height 0.3s;
   }
   .nav.open { max-height: 400px; }
+  .nav.nav-static {
+    position: static; flex-direction: row; gap: 1rem;
+    max-height: none; overflow: visible; border: 0; background: none;
+  }
+  .nav.nav-static a { width: auto; padding: 0; }
   .nav a { padding: 1rem; width: 100%; text-align: center; }
   .nav .btn { width: auto; margin: 0.5rem 0 1rem; }
   .grid-3, .grid-4, .field-row { grid-template-columns: 1fr; }
