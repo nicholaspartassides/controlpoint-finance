@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 60">
   <g transform="translate(6 6)">
-    <circle cx="24" cy="24" r="16" fill="none" stroke="#0f1f3d" stroke-width="4"/>
-    <circle cx="24" cy="24" r="6" fill="#14b8a6"/>
-    <path d="M24 2v9M24 37v9M2 24h9M37 24h9" stroke="#0f1f3d" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="24" cy="24" r="16" fill="none" stroke="#0b2a5b" stroke-width="4"/>
+    <circle cx="24" cy="24" r="6" fill="#96701f"/>
+    <path d="M24 2v9M24 37v9M2 24h9M37 24h9" stroke="#0b2a5b" stroke-width="4" stroke-linecap="round"/>
   </g>
-  <text x="66" y="38" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="26" font-weight="800" letter-spacing="-0.5" fill="#0f1f3d">Control<tspan fill="#14b8a6">Point</tspan></text>
+  <text x="66" y="38" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="26" font-weight="800" letter-spacing="-0.5" fill="#0b2a5b">Control<tspan fill="#96701f">Point</tspan></text>
   <text x="240" y="37" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="2.5" fill="#64748b">FINANCE</text>
 </svg>
