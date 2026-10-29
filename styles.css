@@ -206,7 +206,7 @@ a { color: inherit; text-decoration: none; }
 .plan { position: relative; display: flex; flex-direction: column; }
 .plan h3 { font-size: 1.3rem; }
 .plan-for { min-height: 3em; }
-.price { font-size: 2rem; font-weight: 800; color: var(--navy) !important; margin: 1rem 0; }
+.plan .price { font-size: 2rem; font-weight: 800; color: var(--navy); margin: 1rem 0; }
 .price span { font-size: 1rem; font-weight: 500; color: var(--muted); }
 .plan ul { list-style: none; margin-bottom: 1.75rem; flex: 1; }
 .plan li { padding: 0.45rem 0 0.45rem 1.6rem; position: relative; font-size: 0.95rem; border-bottom: 1px dashed var(--border); }
