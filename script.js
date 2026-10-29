@@ -1,5 +1,32 @@
 const CONTACT_EMAIL = "info@controlpointfinance.com";
 
+const TEXT = {
+  el: {
+    invalid: "Παρακαλώ συμπληρώστε σωστά τα υποχρεωτικά πεδία.",
+    success: "Ανοίγει το πρόγραμμα email σας για να ολοκληρωθεί η αποστολή. Ευχαριστώ!",
+    subject: "Αίτημα συνάντησης",
+    name: "Ονοματεπώνυμο",
+    company: "Εταιρεία",
+    phone: "Τηλέφωνο",
+    revenue: "Ετήσιος τζίρος",
+    plan: "Πακέτο",
+    notSure: "Δεν είμαι σίγουρος/η",
+  },
+  en: {
+    invalid: "Please fill in all required fields correctly.",
+    success: "Your email app is opening to complete the message. Thank you!",
+    subject: "Consultation request",
+    name: "Name",
+    company: "Company",
+    phone: "Phone",
+    revenue: "Annual revenue",
+    plan: "Package",
+    notSure: "Not sure yet",
+  },
+};
+
+const t = TEXT[document.documentElement.lang.startsWith("en") ? "en" : "el"];
+
 document.getElementById("year").textContent = new Date().getFullYear();
 
 const toggle = document.querySelector(".nav-toggle");
@@ -39,27 +66,27 @@ form.addEventListener("submit", (e) => {
   });
 
   if (!valid) {
-    status.textContent = "Παρακαλώ συμπληρώστε σωστά τα υποχρεωτικά πεδία.";
+    status.textContent = t.invalid;
     status.classList.add("error");
     return;
   }
 
   const data = Object.fromEntries(new FormData(form));
-  const subject = `Αίτημα συνάντησης - ${data.company}`;
+  const subject = `${t.subject} - ${data.company}`;
   const body = [
-    `Ονοματεπώνυμο: ${data.name}`,
-    `Εταιρεία: ${data.company}`,
+    `${t.name}: ${data.name}`,
+    `${t.company}: ${data.company}`,
     `Email: ${data.email}`,
-    `Τηλέφωνο: ${data.phone || "-"}`,
-    `Ετήσιος τζίρος: ${data.revenue || "-"}`,
-    `Πακέτο: ${data.plan || "Δεν είμαι σίγουρος/η"}`,
+    `${t.phone}: ${data.phone || "-"}`,
+    `${t.revenue}: ${data.revenue || "-"}`,
+    `${t.plan}: ${data.plan || t.notSure}`,
     "",
     data.message,
   ].join("\n");
 
   window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-  status.textContent = "Ανοίγει το πρόγραμμα email σας για να ολοκληρωθεί η αποστολή. Ευχαριστώ!";
+  status.textContent = t.success;
   status.classList.add("success");
   form.reset();
 });
