@@ -1,5 +1,5 @@
 const CONTACT_EMAIL = "info@controlpointfinance.com";
-const FORM_ACCESS_KEY = "";
+const FORM_ACCESS_KEY = "3d869605-4d63-471c-bfbe-b06bd812bef5";
 const isEn = document.documentElement.lang.startsWith("en");
 
 const TEXT = {
