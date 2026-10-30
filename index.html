@@ -6,7 +6,7 @@
   <title>Εξωτερικός Οικονομικός Διευθυντής (CFO) στην Κύπρο | ControlPoint Finance</title>
   <meta name="description" content="Οικονομικός διευθυντής (CFO) και εξωτερικός οικονομικός διευθυντής για μικρομεσαίες επιχειρήσεις σε Κύπρο και Ελλάδα. Προϋπολογισμοί, ταμειακές ροές, αναφορές διοίκησης και KPIs με μηνιαία συνεργασία." />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="stylesheet" href="styles.css?v=6" />
+  <link rel="stylesheet" href="styles.css?v=7" />
   <link rel="alternate" hreflang="el" href="https://controlpointfinance.com/" />
   <link rel="alternate" hreflang="en" href="https://controlpointfinance.com/en/" />
   <link rel="alternate" hreflang="x-default" href="https://controlpointfinance.com/en/" />
@@ -378,7 +378,7 @@
           </ul>
           <img class="side-photo contact-photo" src="img/growth-plant.jpg" alt="Φυτό που φυτρώνει μέσα από κέρματα" width="1000" height="667" loading="lazy" />
         </div>
-        <form class="contact-form" id="contactForm" novalidate>
+        <form class="contact-form" id="contactForm" action="https://formsubmit.co/info@controlpointfinance.com" method="POST" novalidate>
           <div class="field-row">
             <label>Ονοματεπώνυμο*<input type="text" name="name" required /></label>
             <label>Εταιρεία*<input type="text" name="company" required /></label>
@@ -411,6 +411,11 @@
           </div>
           <input type="hidden" name="custom" id="customSummary" />
           <input type="hidden" name="customTotal" id="customTotalField" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_subject" id="formSubject" value="Αίτημα συνάντησης" />
+          <input type="hidden" name="_next" value="https://controlpointfinance.com/?sent=1#contact" />
+          <label class="hp" aria-hidden="true">Ιστότοπος<input type="text" name="_honey" tabindex="-1" autocomplete="off" /></label>
           <label>Πώς μπορούμε να βοηθήσουμε;*<textarea name="message" rows="4" required></textarea></label>
           <button type="submit" class="btn btn-block">Αποστολή αιτήματος</button>
           <p class="form-privacy">Τα στοιχεία σας χρησιμοποιούνται μόνο για να απαντήσουμε στο αίτημά σας. Δείτε την <a href="privacy.html">Πολιτική Απορρήτου</a>.</p>
@@ -427,7 +432,7 @@
     </div>
   </footer>
 
-  <script src="script.js?v=2"></script>
+  <script src="script.js?v=3"></script>
   <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "639869abf9d54f88b8140ca64af5be7c"}'></script>
 </body>
 </html>

@@ -4,7 +4,9 @@ const isEn = document.documentElement.lang.startsWith("en");
 const TEXT = {
   el: {
     invalid: "Παρακαλώ συμπληρώστε σωστά τα υποχρεωτικά πεδία.",
-    success: "Ανοίγει το πρόγραμμα email σας για να ολοκληρωθεί η αποστολή. Ευχαριστούμε!",
+    sending: "Αποστολή…",
+    success: "Το αίτημα στάλθηκε. Θα επικοινωνήσουμε μαζί σας σύντομα.",
+    error: "Δεν στάλθηκε. Δοκιμάστε ξανά ή στείλτε email στο info@controlpointfinance.com.",
     subject: "Αίτημα συνάντησης",
     name: "Ονοματεπώνυμο",
     company: "Εταιρεία",
@@ -20,7 +22,9 @@ const TEXT = {
   },
   en: {
     invalid: "Please fill in all required fields correctly.",
-    success: "Your email app is opening to complete the message. Thank you!",
+    sending: "Sending…",
+    success: "Your request has been sent. We will get back to you shortly.",
+    error: "It did not send. Please try again or email info@controlpointfinance.com.",
     subject: "Consultation request",
     name: "Name",
     company: "Company",
@@ -167,7 +171,17 @@ if (customPack) {
   syncCustom();
 }
 
-form.addEventListener("submit", (e) => {
+function resetCustomPack() {
+  if (!customPack) return;
+  customPack.querySelectorAll('input[name="svc"]').forEach((cb) => {
+    cb.checked = false;
+  });
+  const meet = document.getElementById("meetings");
+  if (meet) meet.value = "0";
+  syncCustom();
+}
+
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
   status.className = "form-status";
 
@@ -184,33 +198,69 @@ form.addEventListener("submit", (e) => {
     return;
   }
 
+  const honey = form.querySelector('[name="_honey"]');
+  if (honey && honey.value.trim()) {
+    status.textContent = t.success;
+    status.classList.add("success");
+    form.reset();
+    resetCustomPack();
+    return;
+  }
+
   syncCustom();
   const data = Object.fromEntries(new FormData(form));
   const subject = `${t.subject} - ${data.company}`;
-  const bodyLines = [
-    `${t.name}: ${data.name}`,
-    `${t.company}: ${data.company}`,
-    `Email: ${data.email}`,
-    `${t.phone}: ${data.phone || "-"}`,
-    `${t.revenue}: ${data.revenue || "-"}`,
-    `${t.plan}: ${data.plan || t.notSure}`,
-  ];
-  if (data.custom) bodyLines.push(`${t.custom}: ${data.custom}`);
-  if (data.customTotal) bodyLines.push(`${t.customTotal}: ${data.customTotal}`);
-  bodyLines.push("", data.message);
-  const body = bodyLines.join("\n");
+  const subjectField = document.getElementById("formSubject");
+  if (subjectField) subjectField.value = subject;
 
-  window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const payload = {
+    _subject: subject,
+    _template: "table",
+    _captcha: "false",
+    name: data.name,
+    company: data.company,
+    email: data.email,
+    phone: data.phone || "-",
+    revenue: data.revenue || "-",
+    plan: data.plan || t.notSure,
+    message: data.message,
+  };
+  if (data.custom) payload.custom = data.custom;
+  if (data.customTotal) payload.customTotal = data.customTotal;
 
-  status.textContent = t.success;
-  status.classList.add("success");
-  form.reset();
-  if (customPack) {
-    customPack.querySelectorAll('input[name="svc"]').forEach((cb) => {
-      cb.checked = false;
+  const submitBtn = form.querySelector('[type="submit"]');
+  submitBtn.disabled = true;
+  status.textContent = t.sending;
+
+  try {
+    const res = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(payload),
     });
-    const meet = document.getElementById("meetings");
-    if (meet) meet.value = "0";
-    syncCustom();
+    const result = await res.json().catch(() => ({}));
+    const ok =
+      res.ok &&
+      (result.success === true ||
+        result.success === "true" ||
+        result.ok === true);
+    if (!ok) throw new Error(result.message || "fail");
+
+    status.textContent = t.success;
+    status.classList.add("success");
+    form.reset();
+    resetCustomPack();
+    submitBtn.disabled = false;
+  } catch {
+    form.submit();
   }
 });
+
+if (new URLSearchParams(window.location.search).get("sent")) {
+  status.textContent = t.success;
+  status.classList.add("success");
+  history.replaceState({}, "", `${window.location.pathname}#contact`);
+}
