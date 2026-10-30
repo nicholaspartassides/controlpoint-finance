@@ -1,4 +1,5 @@
 const CONTACT_EMAIL = "info@controlpointfinance.com";
+const FORM_ACCESS_KEY = "";
 const isEn = document.documentElement.lang.startsWith("en");
 
 const TEXT = {
@@ -209,14 +210,10 @@ form.addEventListener("submit", async (e) => {
 
   syncCustom();
   const data = Object.fromEntries(new FormData(form));
-  const subject = `${t.subject} - ${data.company}`;
-  const subjectField = document.getElementById("formSubject");
-  if (subjectField) subjectField.value = subject;
-
   const payload = {
-    _subject: subject,
-    _template: "table",
-    _captcha: "false",
+    access_key: FORM_ACCESS_KEY,
+    subject: `${t.subject} - ${data.company}`,
+    from_name: "ControlPoint Finance",
     name: data.name,
     company: data.company,
     email: data.email,
@@ -233,7 +230,7 @@ form.addEventListener("submit", async (e) => {
   status.textContent = t.sending;
 
   try {
-    const res = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
+    const res = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -242,25 +239,16 @@ form.addEventListener("submit", async (e) => {
       body: JSON.stringify(payload),
     });
     const result = await res.json().catch(() => ({}));
-    const ok =
-      res.ok &&
-      (result.success === true ||
-        result.success === "true" ||
-        result.ok === true);
-    if (!ok) throw new Error(result.message || "fail");
+    if (!res.ok || result.success !== true) throw new Error(result.message || "fail");
 
     status.textContent = t.success;
     status.classList.add("success");
     form.reset();
     resetCustomPack();
-    submitBtn.disabled = false;
   } catch {
-    form.submit();
+    status.textContent = t.error;
+    status.classList.add("error");
+  } finally {
+    submitBtn.disabled = false;
   }
 });
-
-if (new URLSearchParams(window.location.search).get("sent")) {
-  status.textContent = t.success;
-  status.classList.add("success");
-  history.replaceState({}, "", `${window.location.pathname}#contact`);
-}
