@@ -6,7 +6,7 @@
   <title>Εξωτερικός Οικονομικός Διευθυντής (CFO) στην Κύπρο | ControlPoint Finance</title>
   <meta name="description" content="Οικονομικός διευθυντής (CFO) και εξωτερικός οικονομικός διευθυντής για μικρομεσαίες επιχειρήσεις σε Κύπρο και Ελλάδα. Προϋπολογισμοί, ταμειακές ροές, αναφορές διοίκησης και KPIs με μηνιαία συνεργασία." />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="stylesheet" href="styles.css?v=4" />
+  <link rel="stylesheet" href="styles.css?v=6" />
   <link rel="alternate" hreflang="el" href="https://controlpointfinance.com/" />
   <link rel="alternate" hreflang="en" href="https://controlpointfinance.com/en/" />
   <link rel="alternate" hreflang="x-default" href="https://controlpointfinance.com/en/" />
@@ -282,6 +282,49 @@
             <a href="#contact" class="btn btn-ghost btn-block" data-plan="Στρατηγικό">Ενδιαφέρομαι</a>
           </div>
         </div>
+
+        <div class="custom-pack" id="customPack">
+          <p class="eyebrow">Τιμοκατάλογος</p>
+          <h3>Φτιάξτε το δικό σας πακέτο</h3>
+          <p class="hint">Επιλέξτε τις υπηρεσίες που χρειάζεστε. Το σύνολο είναι μηνιαίο, χωρίς ΦΠΑ. Η τελική πρόταση επιβεβαιώνεται μετά τη διάγνωση.</p>
+          <div class="table-wrap">
+            <table class="price-list">
+              <thead>
+                <tr><th class="check"></th><th>Υπηρεσία</th><th>Μηνιαία αμοιβή</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="check"><input type="checkbox" name="svc" id="svc-reporting" value="Μηνιαίες αναφορές διοίκησης" data-price="200" /></td><td><label for="svc-reporting">Μηνιαίες αναφορές διοίκησης</label></td><td>€200</td></tr>
+                <tr><td class="check"><input type="checkbox" name="svc" id="svc-budget" value="Προϋπολογισμός &amp; προβλέψεις" data-price="200" /></td><td><label for="svc-budget">Προϋπολογισμός &amp; προβλέψεις</label></td><td>€200</td></tr>
+                <tr><td class="check"><input type="checkbox" name="svc" id="svc-cash" value="Διαχείριση ταμειακών ροών" data-price="200" /></td><td><label for="svc-cash">Διαχείριση ταμειακών ροών</label></td><td>€200</td></tr>
+                <tr><td class="check"><input type="checkbox" name="svc" id="svc-kpis" value="KPIs &amp; dashboards" data-price="200" /></td><td><label for="svc-kpis">KPIs &amp; dashboards</label></td><td>€200</td></tr>
+                <tr><td class="check"><input type="checkbox" name="svc" id="svc-costing" value="Κοστολόγηση &amp; περιθώρια" data-price="200" /></td><td><label for="svc-costing">Κοστολόγηση &amp; περιθώρια</label></td><td>€200</td></tr>
+                <tr><td class="check"><input type="checkbox" name="svc" id="svc-controls" value="Εσωτερικές δικλίδες &amp; διαδικασίες" data-price="300" /></td><td><label for="svc-controls">Εσωτερικές δικλίδες &amp; διαδικασίες</label></td><td>€300</td></tr>
+                <tr><td class="check"><input type="checkbox" name="svc" id="svc-funding" value="Τράπεζες, επενδυτές &amp; χρηματοδότηση" data-price="200" /></td><td><label for="svc-funding">Τράπεζες, επενδυτές &amp; χρηματοδότηση</label></td><td>€200</td></tr>
+                <tr><td class="check"><input type="checkbox" name="svc" id="svc-accountant" value="Συντονισμός με τον λογιστή" data-price="200" /></td><td><label for="svc-accountant">Συντονισμός με τον λογιστή</label></td><td>€200</td></tr>
+                <tr><td class="check"><input type="checkbox" name="svc" id="svc-strategy" value="Στρατηγική υποστήριξη" data-price="200" /></td><td><label for="svc-strategy">Στρατηγική υποστήριξη</label></td><td>€200</td></tr>
+                <tr><td class="check"><input type="checkbox" name="svc" id="svc-bizplan" value="Επιχειρηματικό σχέδιο" data-price="300" /></td><td><label for="svc-bizplan">Επιχειρηματικό σχέδιο</label></td><td>€300</td></tr>
+                <tr><td class="check"><input type="checkbox" name="svc" id="svc-board" value="Παρουσία σε συναντήσεις διοίκησης" data-price="100" /></td><td><label for="svc-board">Παρουσία σε συναντήσεις διοίκησης</label></td><td>€100</td></tr>
+                <tr><td class="check"><input type="checkbox" name="svc" id="svc-priority" value="Προτεραιότητα στην επικοινωνία" data-price="200" /></td><td><label for="svc-priority">Προτεραιότητα στην επικοινωνία</label></td><td>€200</td></tr>
+                <tr>
+                  <td class="check"></td>
+                  <td>
+                    <label for="meetings">Συναντήσεις τον μήνα</label>
+                    <span class="meet-ctrl">
+                      <button type="button" class="qty" data-qty="-1" aria-label="Λιγότερες">−</button>
+                      <input type="number" id="meetings" min="0" max="12" value="0" data-price="100" />
+                      <button type="button" class="qty" data-qty="1" aria-label="Περισσότερες">+</button>
+                    </span>
+                  </td>
+                  <td>€100 / ημέρα</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="custom-total">
+            <p>Εκτιμώμενο σύνολο <strong id="customTotal">€0</strong><span>/μήνα</span></p>
+            <a href="#contact" class="btn" id="customCta" data-plan="Προσαρμοσμένο">Ζητήστε αυτό το πακέτο</a>
+          </div>
+        </div>
         <p class="note center">Οι τιμές είναι ενδεικτικές, χωρίς ΦΠΑ. Η τελική πρόταση διαμορφώνεται μετά τη διάγνωση. Διατίθενται και έργα μίας φοράς (π.χ. business plan, φάκελος δανείου).</p>
       </div>
     </section>
@@ -361,10 +404,13 @@
                 <option>Βασικό</option>
                 <option>Ανάπτυξη</option>
                 <option>Στρατηγικό</option>
+                <option>Προσαρμοσμένο</option>
                 <option>Έργο μίας φοράς</option>
               </select>
             </label>
           </div>
+          <input type="hidden" name="custom" id="customSummary" />
+          <input type="hidden" name="customTotal" id="customTotalField" />
           <label>Πώς μπορούμε να βοηθήσουμε;*<textarea name="message" rows="4" required></textarea></label>
           <button type="submit" class="btn btn-block">Αποστολή αιτήματος</button>
           <p class="form-privacy">Τα στοιχεία σας χρησιμοποιούνται μόνο για να απαντήσουμε στο αίτημά σας. Δείτε την <a href="privacy.html">Πολιτική Απορρήτου</a>.</p>
@@ -381,7 +427,7 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=2"></script>
   <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "639869abf9d54f88b8140ca64af5be7c"}'></script>
 </body>
 </html>

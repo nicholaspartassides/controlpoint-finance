@@ -6,7 +6,7 @@
   <title>Fractional CFO &amp; Financial Controller in Cyprus | ControlPoint Finance</title>
   <meta name="description" content="Fractional and outsourced CFO and Financial Controller services for SMEs in Cyprus, Greece and Europe. Budgeting, cash flow forecasting, management reporting and KPIs, without a full-time hire." />
   <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
-  <link rel="stylesheet" href="../styles.css?v=4" />
+  <link rel="stylesheet" href="../styles.css?v=6" />
   <link rel="alternate" hreflang="el" href="https://controlpointfinance.com/" />
   <link rel="alternate" hreflang="en" href="https://controlpointfinance.com/en/" />
   <link rel="alternate" hreflang="x-default" href="https://controlpointfinance.com/en/" />
@@ -282,6 +282,49 @@
             <a href="#contact" class="btn btn-ghost btn-block" data-plan="Strategic">I'm interested</a>
           </div>
         </div>
+
+        <div class="custom-pack" id="customPack">
+          <p class="eyebrow">Price list</p>
+          <h3>Build your own package</h3>
+          <p class="hint">Select the services you need. Totals are monthly, excluding VAT. The final proposal is confirmed after the diagnosis.</p>
+          <div class="table-wrap">
+            <table class="price-list">
+              <thead>
+                <tr><th class="check"></th><th>Service</th><th>Monthly fee</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="check"><input type="checkbox" name="svc" id="svc-reporting" value="Monthly management reporting" data-price="200" /></td><td><label for="svc-reporting">Monthly management reporting</label></td><td>€200</td></tr>
+                <tr><td class="check"><input type="checkbox" name="svc" id="svc-budget" value="Budgeting &amp; forecasting" data-price="200" /></td><td><label for="svc-budget">Budgeting &amp; forecasting</label></td><td>€200</td></tr>
+                <tr><td class="check"><input type="checkbox" name="svc" id="svc-cash" value="Cash flow management" data-price="200" /></td><td><label for="svc-cash">Cash flow management</label></td><td>€200</td></tr>
+                <tr><td class="check"><input type="checkbox" name="svc" id="svc-kpis" value="KPIs &amp; dashboards" data-price="200" /></td><td><label for="svc-kpis">KPIs &amp; dashboards</label></td><td>€200</td></tr>
+                <tr><td class="check"><input type="checkbox" name="svc" id="svc-costing" value="Costing &amp; margins" data-price="200" /></td><td><label for="svc-costing">Costing &amp; margins</label></td><td>€200</td></tr>
+                <tr><td class="check"><input type="checkbox" name="svc" id="svc-controls" value="Internal controls &amp; processes" data-price="300" /></td><td><label for="svc-controls">Internal controls &amp; processes</label></td><td>€300</td></tr>
+                <tr><td class="check"><input type="checkbox" name="svc" id="svc-funding" value="Banks, investors &amp; funding" data-price="200" /></td><td><label for="svc-funding">Banks, investors &amp; funding</label></td><td>€200</td></tr>
+                <tr><td class="check"><input type="checkbox" name="svc" id="svc-accountant" value="Working with your accountant" data-price="200" /></td><td><label for="svc-accountant">Working with your accountant</label></td><td>€200</td></tr>
+                <tr><td class="check"><input type="checkbox" name="svc" id="svc-strategy" value="Strategic support" data-price="200" /></td><td><label for="svc-strategy">Strategic support</label></td><td>€200</td></tr>
+                <tr><td class="check"><input type="checkbox" name="svc" id="svc-bizplan" value="Business plans &amp; funding" data-price="300" /></td><td><label for="svc-bizplan">Business plans &amp; funding</label></td><td>€300</td></tr>
+                <tr><td class="check"><input type="checkbox" name="svc" id="svc-board" value="Board / management meeting attendance" data-price="100" /></td><td><label for="svc-board">Board / management meeting attendance</label></td><td>€100</td></tr>
+                <tr><td class="check"><input type="checkbox" name="svc" id="svc-priority" value="Priority communication" data-price="200" /></td><td><label for="svc-priority">Priority communication</label></td><td>€200</td></tr>
+                <tr>
+                  <td class="check"></td>
+                  <td>
+                    <label for="meetings">Meetings per month</label>
+                    <span class="meet-ctrl">
+                      <button type="button" class="qty" data-qty="-1" aria-label="Fewer">−</button>
+                      <input type="number" id="meetings" min="0" max="12" value="0" data-price="100" />
+                      <button type="button" class="qty" data-qty="1" aria-label="More">+</button>
+                    </span>
+                  </td>
+                  <td>€100 / day</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="custom-total">
+            <p>Estimated total <strong id="customTotal">€0</strong><span>/month</span></p>
+            <a href="#contact" class="btn" id="customCta" data-plan="Custom">Request this package</a>
+          </div>
+        </div>
         <p class="note center">Prices are indicative and exclude VAT where applicable. The final proposal follows the diagnosis. One-off projects are also available (e.g. business plan, loan application).</p>
       </div>
     </section>
@@ -357,10 +400,13 @@
                 <option>Essentials</option>
                 <option>Growth</option>
                 <option>Strategic</option>
+                <option>Custom</option>
                 <option>One-off project</option>
               </select>
             </label>
           </div>
+          <input type="hidden" name="custom" id="customSummary" />
+          <input type="hidden" name="customTotal" id="customTotalField" />
           <label>How can we help?*<textarea name="message" rows="4" required></textarea></label>
           <button type="submit" class="btn btn-block">Send request</button>
           <p class="form-privacy">Your details are used only to respond to your enquiry. See our <a href="privacy.html">Privacy Policy</a>.</p>
@@ -377,7 +423,7 @@
     </div>
   </footer>
 
-  <script src="../script.js"></script>
+  <script src="../script.js?v=2"></script>
   <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "639869abf9d54f88b8140ca64af5be7c"}'></script>
 </body>
 </html>
